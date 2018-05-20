@@ -1,0 +1,219 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+  height: 100%;
+}
+
+#root>div {
+height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background-color:  #328fe0;
+  padding: 5px 5px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color:white;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 26px;
+  /* color: rgb(245, 221, 4); */
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+/* .header a.active {
+  background-color: dodgerblue;
+  color: white;
+} */
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+
+/* Float the link section to the right */
+.header-left {
+  float: left;
+}
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+@media screen and (max-width: 500px) {
+  .header a {
+      float: none;
+      display: block;
+      text-align: left;
+  }
+  .header-right {
+      float: none;
+  }
+}
+
+.content {
+  padding: 10px 0px; 
+  height: 100%;
+}
+
+
+.main {   
+  -ms-flex: 80%; /* IE10 */
+  flex: 80%;
+  background-color: white;
+  padding: 20px;
+}
+
+.main>h1 {
+  color: rgb(158, 98, 158);
+}
+
+.main p {
+  color: rgb(187, 119, 187);
+}
+
+.row {
+  height:100%;
+}
+
+.side {
+  -ms-flex: 20%; /* IE10 */
+  flex: 15%;
+  background-color: #f0f5f8;
+  padding: 20px;
+  height: 100%;
+}
+
+.side input[type=text] {
+  padding: 6px;
+  border: nonsolide;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 12px;
+}
+
+.checkbox {
+  padding:0px;
+}
+
+.checkbox>label {
+  display: inline;
+  padding: 5px;
+  color: grey;
+  font-size: 15px;
+}
+
+/* 
+.home {
+  display: flex;
+  flex-direction: column; 
+} */
+
+.home-description h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #d66a37;
+  font-weight: bold;
+}
+
+.home-description p {
+  text-align: center;
+  color: rgb(151, 144, 144);
+  margin: 40px 40px;
+}
+/* 
+.home-content {
+  flex-grow: 1;
+} */
+
+
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+  .column {
+      width: 100%;
+      display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f2f2f2;
+}
+
+/* Some left and right padding inside the container */
+.card-content {
+  padding: 5px 5px;
+}
+
+.card-content h2 {
+  color:rgb(158, 98, 158);
+  text-align: center;
+}
+
+.card-content p {
+  text-align: center;
+  color: rgb(187, 119, 187);
+}
+
+/* Clear floats */
+.card-content::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}

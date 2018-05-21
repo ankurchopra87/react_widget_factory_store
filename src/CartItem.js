@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
+/* Presents a item in the cart */
 class CartItem extends Component {
     constructor(props){
         super(props)
@@ -8,6 +9,7 @@ class CartItem extends Component {
         this.onClickToRemove = this.onClickToRemove.bind(this); 
     }
 
+    // Hook to remove from cart
     onClickToRemove(e){
         this.props.removeFromCart(this.props.index);
     }

@@ -8,11 +8,13 @@ import { Redirect } from 'react-router'
 
 import CartItem from "./CartItem"
 
+/* Presents the Checkout page */
 class Checkout extends Component {
 
     constructor(props){
         super(props)   
 
+        // Init state
         this.state = {
             form_fields: {email: '',
                 bill_to_fullname: '',
@@ -34,6 +36,7 @@ class Checkout extends Component {
         this.validateData = this.validateData.bind(this);
     }
 
+    // Hook to keep track of data entered in input fields
     onChange = (e) => {
         // Because we named the inputs to match their corresponding values in state, it's
         // super easy to update the state
@@ -42,6 +45,7 @@ class Checkout extends Component {
         this.setState(state);
     }
 
+    // Validate if the order can be submitted
     validateData(){
 
         if (this.props.cartItems.length === 0){
@@ -58,8 +62,14 @@ class Checkout extends Component {
         }
         return true;
     }
+
+    // Hook to submit order when the button is clicked
     submitOrder(e){
-        if(this.validateData()){
+        if(this.validateData()){ // validate 
+
+            // populate post data from state
+
+            // populate form data
             let form_fields = this.state.form_fields;
             const data = {
                 'bill_to': {
@@ -83,6 +93,7 @@ class Checkout extends Component {
                 'order_line_set': []
             }
 
+            // Populate cart data
             let cartItems = this.props.cartItems;
 
             for(let i=0; i < cartItems.length; i++){
@@ -96,6 +107,7 @@ class Checkout extends Component {
                 });
             }
 
+            // POST order to REST backend.
             fetch("/api/orders/", {
                 body: JSON.stringify(data), // must match 'Content-Type' header
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -110,15 +122,16 @@ class Checkout extends Component {
                 referrer: 'no-referrer', // *client, no-referrer
             })
             .then(response => {
-                if(response.status === 201){
-                    this.props.removeFromCart();
+                if(response.status === 201){ // Created
+                    this.props.removeFromCart(); // Clear Cart
                     return response.json()
                 }
 
-                alert("Order creation Failed!");
+                alert("Order creation Failed!"); // alert that creation failed
                 return null;
             })
             .then(item => {
+                // Set Order on completion. 
                 this.setState({
                     order: item
                 });
@@ -128,6 +141,8 @@ class Checkout extends Component {
     }
 
     render(){
+
+        // Redirect if order exists/completed
         if (this.state.order !== null) {
             return <Redirect to={'/confirmation/' + this.state.order.id} />
         }
@@ -139,10 +154,10 @@ class Checkout extends Component {
         for(let i=0; i < this.props.cartItems.length; i++){
             let cartItem = this.props.cartItems[i];
             cartItemsJsx.push(<CartItem key={cartItem.id + '_' + i} cartItem={cartItem} index={i} removeFromCart={self.props.removeFromCart} />);
-            total += parseFloat(cartItem.price);
+            total += parseFloat(cartItem.price); // calculate total
         }
 
-        total = total.toFixed(8);
+        total = total.toFixed(8); // total to 8 decimal spaces
 
         return (
             <div className="row">
@@ -186,7 +201,7 @@ function mapStateToProps(state){
   
   // Map Redux actions to component props
   function mapDispatchToProps(dispatch) {
-    return {
+    return {  
       removeFromCart: function(itemIndex) {
         return dispatch({
           type: "removeFromCart",

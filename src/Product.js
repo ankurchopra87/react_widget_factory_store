@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
-/*
-Presents Product Info in a Card
-*/
+// Product Info in a Card
 class Product extends Component {
     render(){
         var product = this.props.product;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import AttributeFilterCheckBox from "./AttributeFilterCheckBox"
 
+/* Presents the a list of attribute checkboxes for the type used to toggle filtering skus */
 class AttributesCheckList extends Component {
     render(){
         var renderData = []

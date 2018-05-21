@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import Products from "./Products";
 
+/* Presents the Home page */
 class Home extends Component {
     constructor() {
         super(); 
         this.state = { products: [] };
     }
     componentDidMount(){
+
+        // Fetch products from REST API
         fetch('/api/products/', {
             headers: {
                 'content-type': 'application/json'

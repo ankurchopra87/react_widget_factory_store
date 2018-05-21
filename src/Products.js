@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Product from "./Product"
 import { NavLink } from "react-router-dom";
 
+
+/* Renders Products in a card grid interface */
 class Products extends Component {
 
     render() {

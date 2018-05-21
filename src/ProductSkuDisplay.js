@@ -4,6 +4,7 @@ import Sku from "./Sku"
 
 import "./product-sku-display.css"
 
+// Presents SKU in card grid interface
 class ProductSkuDisplay extends Component {
     constructor(props) {
         super(props); 
@@ -16,16 +17,19 @@ class ProductSkuDisplay extends Component {
         this.loadData(this.props);
     }
 
+    // Load data from REST backend
     loadData(props){
         var self = this; 
 
         if(Number.isInteger(props.productId)){
             let url = '/api/skus/?product_id=' + props.productId; 
 
+            // Apply search 
             if(props.search.length !==0){
                 url += "&search=" + props.search;
             }
 
+            // Apply filters
             if(props.filters.length > 0){
                 url += "&attributes=" +  props.filters.join(",");
             }
@@ -38,6 +42,8 @@ class ProductSkuDisplay extends Component {
             .then(result => result.json())
             .then(
                 function(items){
+
+                    // Set state
                     self.setState({
                         skus: items
                     });

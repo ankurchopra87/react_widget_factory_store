@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+/* Presents the checkbox for an attribute to toggle filtering skus */
 class AttributeFilterCheckBox extends Component {
     constructor(props){
         super(props);

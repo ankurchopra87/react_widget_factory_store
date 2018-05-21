@@ -68,7 +68,7 @@ class ProductDetail extends Component {
         var product = this.state.product;
 
         if(product === null){
-            return null; //Or some other replacement component or markup
+            return null;
          }
 
         return (

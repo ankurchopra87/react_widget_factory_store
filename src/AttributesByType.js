@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-
 import AttributesCheckList from "./AttributesCheckList"
 
+/* Presents attributes by type, used to filter skus */
 class AttributesByType extends Component {
     constructor(props){
         super(props);
@@ -10,7 +10,9 @@ class AttributesByType extends Component {
 
     componentDidMount(){
         var self = this; 
+
         if(Number.isInteger(this.props.productId)){
+            // Fetch the attribute types from REST API
             fetch('/api/product_attribute_types/', {
                 headers: {
                     'content-type': 'application/json'
@@ -19,6 +21,7 @@ class AttributesByType extends Component {
             .then(result => result.json())
             .then(
                 function(items){
+                    // Set State
                     self.setState({
                         attribute_types: items
                     });

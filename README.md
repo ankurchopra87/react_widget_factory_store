@@ -6,6 +6,8 @@ depends on a REST API to communicate with a backend.
 
 Installation
 -----------
+In the project directry, run the following command:
+
 npm install
 
 Start the App
